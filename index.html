@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.6/d3.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            console.log("ready!");
+            var dataurl = "https://api.datausa.io/api/?show=cip&sumlevel=all";
+
+            builddemochart();
+            builddegreechart();
+ 
+        });//end document ready
+   
+        function builddemochart() {
+
+            $('#container1').highcharts({
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Demographic Info for Cyber Security'
+                },
+                xAxis: {
+                    categories: ['Entry Level', 'Mid Level', 'Senior Level' ],
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Employees',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    enabled: true
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    //x: -40,
+                    //y: 80,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                    shadow: true
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Black',
+                    data: [1107, 31, 635]
+                }, {
+                    name: 'Asian',
+                    data: [133, 156, 947]
+                }, {
+                    name: 'Hispanic',
+                    data: [1052, 954, 4250]
+                }, {
+                    name: 'Non-Hispanic',
+                    data: [2451, 156, 4489]
+                }]
+            });
+        }
+
+        function builddegreechart() {
+
+            $('#container2').highcharts({
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Education Info for Cyber Security'
+                },
+                xAxis: {
+                    categories: ['Entry Level', 'Mid Level', 'Senior Level' ],
+                    title: {
+                        text: null
+                    }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Degrees',
+                        align: 'high'
+                    },
+                    labels: {
+                        overflow: 'justify'
+                    }
+                },
+                tooltip: {
+                    enabled: true
+                },
+                plotOptions: {
+                    bar: {
+                        dataLabels: {
+                            enabled: true
+                        }
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -40,
+                    y: 80,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                    shadow: true
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'No Degree',
+                    data: [1107, 31, 635]
+                }, {
+                    name: 'Associates',
+                    data: [133, 156, 947]
+                }, {
+                    name: 'Bachelors',
+                    data: [1052, 954, 2000]
+                }, {
+                    name: 'Master\'s',
+                    data: [40, 20, 75]
+                }, {
+                    name: 'Doctorate',
+                    data: [24, 15, 34]
+                }]
+            });
+        }
+
+    </script>
+</head>
+<body>
+
+    <div id="container1" style="width:100%; height:400px;"></div>
+    <div id="container2" style="width:100%; height:400px;"></div>
+
+</body>
+</html>
